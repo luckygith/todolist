@@ -15,9 +15,20 @@
   font-style: italic;
 }
 
+.page__task {
+  background-color: pink;
+  display: flex;
+}
+.page__task-item {
+  margin: 0;
+  padding: 0;
+}
+
+.page__task-checkbox {
+}
+
 .create-item {
   display: flex;
-  /* align-items: center; */
   border: 2px #000 solid;
   border-radius: 20px;
   background-color: #ffffff;
