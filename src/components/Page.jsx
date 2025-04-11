@@ -9,8 +9,8 @@ function Page() {
       <h2 className="page__title">To Do List</h2>
       <CreateItem />
       {todos.length === 0 ? (
-        <div className="page__list">
-          <h2>No Record</h2>
+        <div className="page__prompt">
+          <h3>No Record</h3>
         </div>
       ) : (
         todos.map((todo) => <div>{todo}</div>)
