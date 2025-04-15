@@ -1,13 +1,19 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
 
-function CreateItem() {
-  const [task, setTask] = useState();
+import "../blocks/CreateItem.css";
+import { createTodo } from "../utils/api";
+
+function CreateItem({ onAdd }) {
+  const [task, setTask] = useState("");
 
   const handleAddTask = () => {
-    axios
-      .post("http://localhost:3001/add", { task: task })
-      .then((result) => console.log(result))
+    createTodo({ task: task })
+      .then((result) => {
+        console.log(result);
+        onAdd();
+        setTask("");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -17,6 +23,7 @@ function CreateItem() {
         type="text"
         className="create-item__input"
         placeholder="task"
+        value={task} // binding value of input to task to be able to reset setTask to ""
         onChange={(e) => setTask(e.target.value)}
       />
       <button

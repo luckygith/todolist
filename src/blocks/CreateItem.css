@@ -1,0 +1,31 @@
+.create-item {
+  display: flex;
+  border: 2px #000 solid;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.create-item__input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.create-item__submit {
+  background: #b9dfff;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  border: none;
+  border-radius: 20px;
+  /* box-shadow: 5px 5px 5px #eee;
+    text-shadow: none; */
+}
+
+.create-item__submit:hover {
+  background: #016abc;
+  border: none;
+  border-radius: 20px;
+  /* box-shadow: 5px 5px 5px #eee; */
+  /* text-shadow: none; */
+}
