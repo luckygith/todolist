@@ -17,6 +17,12 @@ function CreateItem({ onAdd }) {
       .catch((error) => console.log(error));
   };
 
+  const handleEnterKey = (event) => {
+    if (event.key === "Enter") {
+      handleAddTask();
+    }
+  };
+
   return (
     <div className="create-item">
       <input
@@ -25,6 +31,7 @@ function CreateItem({ onAdd }) {
         placeholder="task"
         value={task} // binding value of input to task to be able to reset setTask to ""
         onChange={(e) => setTask(e.target.value)}
+        onKeyDown={handleEnterKey}
       />
       <button
         type="submit"
