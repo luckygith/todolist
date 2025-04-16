@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import "../blocks/App.css";
 import List from "./List";
-import { getTodos, updateTodo, deleteTodo, getLists } from "../utils/api";
+import {
+  getTodos,
+  updateTodo,
+  deleteTodo,
+  getLists,
+  createList,
+} from "../utils/api";
 import Header from "./Header";
 import CreateNewListModal from "./CreateNewListModal";
+import ListsSection from "./ListsSection";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [activeModal, setActiveModal] = useState([]);
-  const [List, setList] = useState([]);
+  const [lists, setLists] = useState([]);
+  const [list, setList] = useState("");
 
   const fetchTodos = () => {
     getTodos()
@@ -21,7 +29,7 @@ function App() {
   const fetchLists = () => {
     getLists()
       .then((result) => {
-        setList(result.data);
+        setLists(result.data);
         console.log("fetchlist is sent");
       })
       .catch((error) => {
@@ -32,6 +40,10 @@ function App() {
   useEffect(() => {
     fetchLists();
   }, []);
+
+  useEffect(() => {
+    console.log("Updated lists:", lists);
+  }, [lists]);
 
   useEffect(() => {
     fetchTodos();
@@ -59,9 +71,9 @@ function App() {
   //   console.log(_id);
   // };
 
-  const handleCreateNewList = () => {
-    console.log("CREATE BUTTON ACTIVE");
-  };
+  // const handleCreateNewList = () => {
+  //   console.log("CREATE BUTTON ACTIVE");
+  // };
 
   const handleCloseModal = () => {
     setActiveModal("");
@@ -72,20 +84,44 @@ function App() {
     console.log("create new list clicked");
   };
 
+  const handleAddList = () => {
+    createList({ list })
+      .then((result) => {
+        console.log(result.data);
+        setLists([result.data, ...lists]);
+
+        setList("");
+
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error("Error, add list request unsuccessful", error);
+      });
+    // .finally(() => setIsLoading(false));
+  };
+
   return (
     <div>
-      <Header handleCreateNewList={handleCreateNewListClick} />
+      <Header handleCreateNewListClick={handleCreateNewListClick} />
       <List
         todos={todos}
         fetchTodos={fetchTodos}
         handleEditCheck={handleEditCheck}
         handleDeleteTask={handleDeleteTask}
       />
+      <ListsSection
+        handleCreateNewListClick={handleCreateNewListClick}
+        lists={lists}
+        fetchLists={fetchLists}
+      />
 
       {activeModal === "create-new-list" && (
         <CreateNewListModal
           isOpen={activeModal === "create-new-list"}
           handleCloseModal={handleCloseModal}
+          handleAddList={handleAddList}
+          list={list}
+          setList={setList}
         />
       )}
     </div>

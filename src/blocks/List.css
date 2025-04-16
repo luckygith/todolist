@@ -21,6 +21,9 @@
   background-color: pink;
   display: flex;
 }
+.list__task:hover {
+  cursor: pointer;
+}
 
 .list__task-checkbox {
   display: flex;

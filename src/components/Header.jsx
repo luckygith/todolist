@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../blocks/Header.css";
+import { IoAddCircleOutline } from "react-icons/io5";
 
-function Header({ handleCreateNewList }) {
+function Header({ handleCreateNewListClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -11,9 +12,12 @@ function Header({ handleCreateNewList }) {
   return (
     <div className="header">
       <p className="header__date">{currentDate}</p>
-      <p className="header__add-list" onClick={() => handleCreateNewList()}>
-        +
-      </p>
+
+      <IoAddCircleOutline
+        type="button"
+        className="header__add-list-button"
+        onClick={handleCreateNewListClick}
+      />
     </div>
   );
 }

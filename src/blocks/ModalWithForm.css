@@ -90,12 +90,13 @@
 
 .modal__input {
   font-family: "Courier New", Courier, monospace;
-  /* display: block; */
+  display: block;
   border: none;
   border-bottom: solid #000000 1px;
   width: 440px;
   width: 100%;
   margin: 8px 0 4px;
+  text-align: center;
 }
 .modal__buttons-container {
   display: flex;

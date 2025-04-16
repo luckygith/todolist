@@ -3,6 +3,12 @@
   border: 2px #000 solid;
   border-radius: 20px;
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.create-item:hover {
+  cursor: pointer;
 }
 
 .create-item__input {

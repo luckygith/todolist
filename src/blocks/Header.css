@@ -4,10 +4,40 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  align-items: center;
 }
 
 .header__date {
 }
 
-.header__add-list {
+.header__add-list-button {
+  font-family: "Courier New", Courier, monospace;
+  border: none;
+  height: 40px;
+  width: 40px;
+  transition: transform 0.4s ease;
 }
+
+.header__add-list-button:hover {
+  cursor: pointer;
+  animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 0% {
+  transform: scale(1);
+}
+35%, 80% {
+  transform: scale(1.1,1.35);
+}
+100% {
+  transform: scale(1);
+} */

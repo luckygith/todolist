@@ -10,14 +10,6 @@ import {
 } from "react-icons/bs";
 
 function List({ todos, fetchTodos, handleEditCheck, handleDeleteTask }) {
-  // const fetchTodos = () => {
-  //   getTodos()
-  //     .then((result) => {
-  //       setTodos(result.data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
   // const handleTesting = (_id) => {
   //   console.log("handle testing");
   //   console.log(_id);

@@ -3,50 +3,40 @@ import "../blocks/CreateNewListModal.css";
 import ModalWithForm from "./ModalWithForm";
 import { createList } from "../utils/api";
 
-function CreateNewListModal({ isOpen, handleCloseModal }) {
+function CreateNewListModal({
+  isOpen,
+  handleCloseModal,
+  handleAddList,
+  list,
+  setList,
+}) {
   const [title, setTitle] = useState("");
+  // const [list, setList] = useState("");
 
-  const handleChange = (e) => {
-    setTitle(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setTitle(e.target.value);
+  // };
 
   const handleEnterKey = (event) => {
     if (event.key === "Enter") {
-      handleAddTask();
+      handleAddList();
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("New list title:", title);
-    handleCloseModal();
-    setTitle("");
-  };
-
-  // function CreateList({ onAdd })
-
-  // {
-  const [list, setList] = useState("");
-
-  const handleAddList = () => {
-    createList({ list: list })
-      .then((result) => {
-        console.log(result);
-        fetchLists();
-        setList("");
-      })
-      .catch((error) => console.log(error));
+    handleAddList();
   };
 
   return (
     <ModalWithForm
       isOpen={isOpen}
       handleCloseModal={handleCloseModal}
-      onChange={handleChange}
+      // onChange={handleChange}
       onSubmit={handleSubmit}
     >
       <div className="modal__container">
-        <label className="modal__label">
+        <label htmlFor="list-title" className="modal__label">
           List Title{" "}
           <input
             type="text"
@@ -54,8 +44,8 @@ function CreateNewListModal({ isOpen, handleCloseModal }) {
             id="title"
             name="list title"
             placeholder="Title name"
-            value={title}
-            onChange={handleChange}
+            value={list}
+            onChange={(e) => setList(e.target.value)}
             onKeyDown={handleEnterKey}
           />
         </label>
