@@ -4,14 +4,14 @@ import axios from "axios";
 import "../blocks/CreateItem.css";
 import { createTodo } from "../utils/api";
 
-function CreateItem({ onAdd }) {
+function CreateItem({ fetchTodos }) {
   const [task, setTask] = useState("");
 
   const handleAddTask = () => {
     createTodo({ task: task })
       .then((result) => {
         console.log(result);
-        onAdd();
+        fetchTodos();
         setTask("");
       })
       .catch((error) => console.log(error));

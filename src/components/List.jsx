@@ -26,7 +26,7 @@ function List({ todos, fetchTodos, handleEditCheck, handleDeleteTask }) {
   return (
     <div className="list">
       <h2 className="list__title">To Do List</h2>
-      <CreateItem onAdd={fetchTodos} />
+      <CreateItem fetchTodos={fetchTodos} />
       {todos.length === 0 ? (
         <div className="list__prompt">
           <h3>No Record</h3>
@@ -41,7 +41,7 @@ function List({ todos, fetchTodos, handleEditCheck, handleDeleteTask }) {
               {todo.done ? (
                 <BsFillCheckCircleFill
                   className="list__task-check"
-                  onClick={handleTesting}
+                  // onClick={handleTesting}
                 />
               ) : (
                 <BsCircleFill className="list__task-circle" />
